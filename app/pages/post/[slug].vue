@@ -1,11 +1,12 @@
-<script setup>
+<script setup lang="ts">
+import { type Post } from "~/types/Post";
 import BlockContent from "~/components/BlockContent.vue";
 
 const query = groq`*[ _type == "post" && slug.current == $slug][0]`;
 const route = useRoute();
-const { data: post } = await useSanityQuery(query, {
+const { data: post }: { data: Post } = (await useSanityQuery(query, {
   slug: route.params.slug,
-});
+})) as any;
 </script>
 <script>
 export default {
