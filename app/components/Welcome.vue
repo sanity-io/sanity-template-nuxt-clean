@@ -31,7 +31,7 @@
         <li class="steps__entry">
           <h3 class="steps__subtitle">Join the Sanity Community</h3>
           <p class="steps__text">
-            Leverage{" "}
+            Leverage{{ " " }}
             <a
               target="_blank"
               rel="noopener noreferrer nofollow"
