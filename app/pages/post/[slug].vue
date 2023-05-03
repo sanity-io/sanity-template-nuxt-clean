@@ -8,7 +8,7 @@ const { data: post }: { data: Post } = (await useSanityQuery(query, {
   slug: route.params.slug,
 })) as any;
 </script>
-<script>
+<script lang="ts">
 export default {
   props: {
     post: {
