@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@sanity/types": "^3.9.1",
+    "@types/node": "^18",
+    "nuxt": "^3.4.3"
+  },
+  "dependencies": {
+    "@nuxtjs/sanity": "^1.7.0",
+    "@sanity/image-url": "^1.0.2",
+    "groq": "^3.9.1"
+  }
+}
