@@ -34,39 +34,39 @@ async function removeTypeScript(folderPath) {
       }
     );
 
-    // recursively loop through src folder to find all astro file paths
-    const astroFilePaths = [];
+    // recursively loop through src folder to find all Nuxt file paths
+    const nuxtFilePaths = [];
 
-    async function scanFolderForAstroFiles(folder) {
+    async function scanFolderForNuxtFiles(folder) {
       const files = await fs
         .readdir(path.resolve(folder), {
           withFileTypes: true,
         })
-        .catch((err) => {});
+        .catch((err) => { });
 
       if (files) {
         for (const file of files) {
-          if (file.isFile() && file.name.endsWith(".astro")) {
-            astroFilePaths.push(path.resolve(folder, file.name));
+          if (file.isFile() && file.name.endsWith(".vue")) {
+            nuxtFilePaths.push(path.resolve(folder, file.name));
             continue;
           }
 
           if (file.isDirectory()) {
-            await scanFolderForAstroFiles(path.resolve(folder, file.name));
+            await scanFolderForNuxtFiles(path.resolve(folder, file.name));
           }
         }
       }
     }
 
-    await scanFolderForAstroFiles(path.resolve(folderPath, "src"));
+    await scanFolderForNuxtFiles(path.resolve(folderPath, "."));
 
-    for (const astroFilePath of astroFilePaths) {
-      const file = await fs.readFile(astroFilePath, {
+    for (const nuxtFilePath of nuxtFilePaths) {
+      const file = await fs.readFile(nuxtFilePath, {
         encoding: "utf8",
       });
 
       // remove typescript
-      const newAstroFile = file
+      const newNuxtFile = file
         .replace(/^\s*interface\s+\w+\s*\{\s*[\s\S]*?\s*\}\s*$/gm, "")
         .replace(/^type\s+.*?;\s*$/gm, "")
         .replace(
@@ -75,7 +75,7 @@ async function removeTypeScript(folderPath) {
         )
         .replace(/as\s+(?:{\s*.*?\s*}|[\w]+);/gm, "");
 
-      fs.writeFile(astroFilePath, newAstroFile);
+      fs.writeFile(nuxtFilePath, newNuxtFile);
     }
 
     console.log("Finished");
