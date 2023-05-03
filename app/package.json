@@ -11,7 +11,9 @@
   "devDependencies": {
     "@sanity/types": "^3.9.1",
     "@types/node": "^18",
-    "nuxt": "^3.4.3"
+    "nuxt": "^3.4.3",
+    "postcss": "^8.4.23",
+    "postcss-nested": "^6.0.1"
   },
   "dependencies": {
     "@nuxtjs/sanity": "^1.7.0",

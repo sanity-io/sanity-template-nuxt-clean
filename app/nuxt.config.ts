@@ -7,4 +7,10 @@ export default defineNuxtConfig({
     useCdn: true,
     apiVersion: "2021-03-25",
   },
+  postcss: {
+    plugins: {
+      autoprefixer: {},
+      "postcss-nested": {},
+    },
+  },
 });
