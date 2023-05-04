@@ -16,6 +16,7 @@
     "postcss-nested": "^6.0.1"
   },
   "dependencies": {
+    "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/sanity": "^1.7.0",
     "@sanity/image-url": "^1.0.2",
     "groq": "^3.9.1"

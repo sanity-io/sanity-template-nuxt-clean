@@ -2,9 +2,17 @@
   <div class="container">
     <div class="logos">
       <div class="logos__blur"></div>
-      <img class="logos__entry" src="/nuxt.svg" alt="Nuxt Logo" />
+      <img
+        class="logos__entry"
+        src="/nuxt.svg"
+        alt="Nuxt Logo"
+      />
       <span class="logos__plus">+</span>
-      <img class="logos__entry" src="/sanity.svg" alt="Sanity Logo" />
+      <img
+        class="logos__entry"
+        src="/sanity.svg"
+        alt="Sanity Logo"
+      />
     </div>
     <div class="steps">
       <h2 class="steps__title">Next steps</h2>
@@ -46,6 +54,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
 .container {
   display: flex;

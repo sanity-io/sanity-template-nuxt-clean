@@ -8,6 +8,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <SanityContent :blocks="blocks" />
 </template>
