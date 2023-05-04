@@ -9,8 +9,12 @@ export default {
   },
 };
 </script>
+
 <template>
-  <div v-if="post" class="card">
+  <div
+    v-if="post"
+    class="card"
+  >
     <img
       v-if="post.mainImage"
       class="card__cover"
@@ -18,11 +22,17 @@ export default {
       alt="Cover image"
     />
 
-    <div v-else class="card__cover--none" />
+    <div
+      v-else
+      class="card__cover--none"
+    />
 
     <div class="card__container">
       <h3 class="card__title">
-        <a class="card__link" :href="`/post/${post.slug.current}`">
+        <a
+          class="card__link"
+          :href="`/post/${post.slug.current}`"
+        >
           {{ post.title }}
         </a>
       </h3>
@@ -31,6 +41,7 @@ export default {
     </div>
   </div>
 </template>
+
 <style scoped>
 .card {
   display: flex;

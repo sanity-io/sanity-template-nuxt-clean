@@ -17,12 +17,21 @@ async function removeTypeScript(folderPath) {
 
   try {
     // installs
-    await execPromise(
-      "npm install && npx tsc && npx prettier --write . && npx eslint --fix",
-      {
-        cwd: folderPath,
-      }
-    );
+    if (folderPath === studioPath) {
+      await execPromise(
+        "npm install && npx tsc && npx prettier --write . && npx eslint --fix",
+        {
+          cwd: folderPath,
+        }
+      );
+    } else {
+      await execPromise(
+        "npm install && npx prettier --write . && npx eslint --fix",
+        {
+          cwd: folderPath,
+        }
+      );
+    }
 
     // remove files
     await execPromise(
@@ -42,7 +51,7 @@ async function removeTypeScript(folderPath) {
         .readdir(path.resolve(folder), {
           withFileTypes: true,
         })
-        .catch((err) => { });
+        .catch((err) => {});
 
       if (files) {
         for (const file of files) {
@@ -68,16 +77,24 @@ async function removeTypeScript(folderPath) {
       // remove typescript
       const newNuxtFile = file
         .replace(/^\s*interface\s+\w+\s*\{\s*[\s\S]*?\s*\}\s*$/gm, "")
-        .replace(/^type\s+.*?;\s*$/gm, "")
+        .replace(/<Post(\[\])?>/gm, "")
+        .replace(/lang\s*=\s*["']\s*ts\s*["']/gm, "")
         .replace(
-          /^.*import\s+type\s*\{\s*Post\s*\}\s*from\s*"\.\.\/utils\/sanity".*\n?/gm,
+          /^import\s+\{\s*type\s+Post\s*\}\s+from\s+["']~\/types\/Post["'];?\s*/gm,
           ""
         )
-        .replace(/as\s+(?:{\s*.*?\s*}|[\w]+);/gm, "");
+        .replace(
+          /^.*import\s+type\s*\{\s*Post\s*\}\s*from\s*"@sanity\/types".*\n?/gm,
+          ""
+        );
 
       fs.writeFile(nuxtFilePath, newNuxtFile);
     }
 
+    // delete types folder
+    if (folderPath === appPath) {
+      fs.rmdir(path.join(folderPath, "/types"));
+    }
     console.log("Finished");
   } catch (error) {
     console.log(error);
