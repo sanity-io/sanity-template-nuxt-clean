@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: [
+    '@/assets/css/main.css',
+  ],
   modules: [
     "@nuxtjs/sanity",
     [
@@ -23,8 +26,11 @@ export default defineNuxtConfig({
   },
   postcss: {
     plugins: {
-      autoprefixer: {},
       "postcss-nested": {},
+      'postcss-import': {},
+      'tailwindcss/nesting': {},
+      tailwindcss: {},
+      autoprefixer: {},
     },
   },
 });

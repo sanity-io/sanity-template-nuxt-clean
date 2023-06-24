@@ -22,24 +22,13 @@ export default {
 </script>
 <template>
   <section class="post">
-    <img
-      v-if="post.mainImage"
-      class="post__cover"
-      :src="$urlFor(post.mainImage).width(1920).url()"
-      alt="Cover image"
-    />
-    <div
-      v-else
-      class="post__cover--none"
-    />
+    <img v-if="post.mainImage" class="post__cover" :src="$urlFor(post.mainImage).width(1920).url()" alt="Cover image" />
+    <div v-else class="post__cover--none" />
     <div class="post__container">
       <h1 class="post__title">{{ post.title }}</h1>
       <p class="post__excerpt">{{ post.excerpt }}</p>
       <p class="post__date">{{ formatDate(post._createdAt) }}</p>
-      <div
-        v-if="post.body"
-        class="post__content"
-      >
+      <div v-if="post.body" class="post__content">
         <BlockContent :blocks="post.body" />
       </div>
     </div>
@@ -115,6 +104,7 @@ export default {
 
 @media (min-width: 800px) {
   .post {
+
     & .post__cover,
     & .post__cover--none {
       width: 750px;
