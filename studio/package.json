@@ -27,7 +27,7 @@
     "@types/react": "^18.2.21",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.48.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.3",
     "rimraf": "^4.4.1",
     "typescript": "^5.2.2"
   },
