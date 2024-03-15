@@ -1,12 +1,15 @@
-import imageUrlBuilder from "@sanity/image-url";
-import type { Image } from "@sanity/types";
+import imageUrlBuilder from '@sanity/image-url'
+import type { Image } from '@sanity/types'
 
 export default defineNuxtPlugin(() => {
-  const builder = imageUrlBuilder(useSanity().config);
+  const sanity = useSanity()
+  const builder = imageUrlBuilder(sanity.client)
+
   function urlFor(source: Image) {
-    return builder.image(source).auto("format");
+    return builder.image(source)
   }
+
   return {
     provide: { urlFor },
-  };
-});
+  }
+})

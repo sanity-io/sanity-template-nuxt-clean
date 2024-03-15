@@ -1,45 +1,27 @@
-<script>
-import { formatDate } from "~/utils";
-export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
-    },
-  },
-};
+<script lang="ts" setup>
+import type { Post } from '~/types/Post'
+import { formatDate, urlFor } from '~/utils'
+
+defineProps<{ post: Post }>()
 </script>
 
 <template>
-  <div
-    v-if="post"
-    class="card"
-  >
+  <NuxtLink class="card" :to="`/post/${post.slug.current}`">
     <img
       v-if="post.mainImage"
       class="card__cover"
-      :src="$urlFor(post.mainImage).width(500).height(300).url()"
+      :src="urlFor(post.mainImage).width(500).height(300).url()"
       alt="Cover image"
     />
 
-    <div
-      v-else
-      class="card__cover--none"
-    />
+    <div v-else class="card__cover--none" />
 
     <div class="card__container">
-      <h3 class="card__title">
-        <a
-          class="card__link"
-          :href="`/post/${post.slug.current}`"
-        >
-          {{ post.title }}
-        </a>
-      </h3>
+      <h3 class="card__title">{{ post.title }}</h3>
       <p class="card__excerpt">{{ post.excerpt }}</p>
       <p class="card__date">{{ formatDate(post._createdAt) }}</p>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <style scoped>
@@ -50,6 +32,8 @@ export default {
   padding: 9px;
   position: relative;
   border-bottom: 1px solid #ced2d9;
+  color: var(--black);
+  text-decoration: none;
 
   & .card__container {
     margin: 0 var(--space-1) 0;
@@ -91,20 +75,9 @@ export default {
     margin-top: calc(var(----space-4) + 7);
   }
 
-  & .card__link {
-    color: var(--black);
-    text-decoration: none;
-
-    &:hover {
-      opacity: 0.8;
-      transition: 0.2s;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-    }
+  &:hover .card__title {
+    opacity: 0.8;
+    transition: 0.2s;
   }
 
   &:first-child {
