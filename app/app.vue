@@ -1,11 +1,16 @@
 <template>
+  <a
+    v-if="previewEnabled && !inFrame"
+    :href="`/preview/disable?redirect=${route.fullPath}`"
+    class="preview-toggle"
+  >
+    <span>Preview Enabled</span>
+    <span>Disable Preview</span>
+  </a>
+
   <div class="container">
     <header class="header">
-      <a
-        class="header__title"
-        href="/"
-        >Nuxt + Sanity</a
-      >
+      <a class="header__title" href="/">Nuxt + Sanity</a>
     </header>
     <main>
       <NuxtPage />
@@ -34,7 +39,77 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const route = useRoute()
+const { enabled: previewEnabled, inFrame } = useSanityVisualEditingState()
+</script>
+
 <style>
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 20px;
+  --space-5: 32px;
+  --space-6: 52px;
+  --space-7: 84px;
+  --space-8: 136px;
+  --space-9: 220px;
+
+  --font-family-sans: Inter;
+  --font-family-serif: PT Serif;
+  --font-family-mono: IBM Plex Mono;
+
+  --font-size-0: 12px;
+  --font-size-1: 14px;
+  --font-size-2: 16px;
+  --font-size-3: 18px;
+  --font-size-4: 20px;
+  --font-size-5: 24px;
+  --font-size-6: 30px;
+  --font-size-7: 36px;
+  --font-size-8: 48px;
+  --font-size-9: 60px;
+  --font-size-10: 72px;
+
+  --line-height-0: 16px;
+  --line-height-1: 20px;
+  --line-height-2: 24px;
+  --line-height-3: 28px;
+  --line-height-4: 28px;
+  --line-height-5: 32px;
+  --line-height-6: 36px;
+  --line-height-7: 40px;
+  --line-height-8: 48px;
+  --line-height-9: 60px;
+  --line-height-10: 72px;
+  --line-height-11: 96px;
+  --line-height-12: 128px;
+
+  --white: #fff;
+  --black: #101112;
+  --gray-200: #ced2d9;
+  --gray-600: #6e7683;
+  --blue-600: #1e61cd;
+  --magenta-100: #f9d7eb;
+
+  --max-width-0: 320px;
+  --max-width-1: 768px;
+}
+
+html {
+  background-color: var(--white);
+  font-family: var(--font-family-sans), var(--font-family-serif), sans-serif;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+</style>
+
+<style scoped>
 .container {
   margin: 0 auto;
 }
@@ -107,69 +182,46 @@ main {
     margin: var(--space-3) 0;
   }
 }
-</style>
 
-<style>
-:root {
-  --space-0: 0;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 20px;
-  --space-5: 32px;
-  --space-6: 52px;
-  --space-7: 84px;
-  --space-8: 136px;
-  --space-9: 220px;
-
-  --font-family-sans: Inter;
-  --font-family-serif: PT Serif;
-  --font-family-mono: IMB Plex Mono;
-
-  --font-size-0: 12px;
-  --font-size-1: 14px;
-  --font-size-2: 16px;
-  --font-size-3: 18px;
-  --font-size-4: 20px;
-  --font-size-5: 24px;
-  --font-size-6: 30px;
-  --font-size-7: 36px;
-  --font-size-8: 48px;
-  --font-size-9: 60px;
-  --font-size-10: 72px;
-
-  --line-height-0: 16px;
-  --line-height-1: 20px;
-  --line-height-2: 24px;
-  --line-height-3: 28px;
-  --line-height-4: 28px;
-  --line-height-5: 32px;
-  --line-height-6: 36px;
-  --line-height-7: 40px;
-  --line-height-8: 48px;
-  --line-height-9: 60px;
-  --line-height-10: 72px;
-  --line-height-11: 96px;
-  --line-height-12: 128px;
-
-  --white: #fff;
-  --black: #101112;
-  --gray-200: #ced2d9;
-  --gray-600: #6e7683;
-  --blue-600: #1e61cd;
-  --magenta-100: #f9d7eb;
-
-  --max-width-0: 320px;
-  --max-width-1: 768px;
+.preview-toggle {
+  backdrop-filter: blur(12px);
+  border-radius: 0.25rem;
+  bottom: 1rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  color: #1f2937;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  position: fixed;
+  right: 1rem;
+  text-align: center;
+  text-decoration: none;
+  z-index: 50;
 }
 
-html {
-  background-color: var(--white);
-  font-family: var(--font-family-sans), var(--font-family-serif), sans-serif;
-  text-size-adjust: 100%;
+.preview-toggle:hover {
+  background-color: #ef4444;
+  color: #ffffff;
 }
 
-body {
-  margin: 0;
+.preview-toggle span:first-child {
+  display: block;
+}
+.preview-toggle:hover span:first-child {
+  display: none;
+}
+
+.preview-toggle span:last-child {
+  display: none;
+}
+.preview-toggle:hover span:last-child {
+  display: block;
 }
 </style>

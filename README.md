@@ -13,7 +13,7 @@ This starter uses [Nuxt](https://nuxt.com/) for the front end and [Sanity](https
 >
 > This starter features an `/app` and a `/studio` folder. The `/app` folder contains the frontend code, and the `/studio` folder contains the Sanity Studio code.
 >
-> This is **not** a monorepo setup. We put them both in one repository for the sake of simplicity. You might want to have separate repositories for each of the folders, to make it easier to deploy the app and the studio separately.
+> It is configured as a monorepo using [pnpm workspaces](https://pnpm.io/workspaces), but you can treat these directories as separate projects if you prefer.
 
 ## Prerequisities
 
@@ -22,20 +22,40 @@ This starter uses [Nuxt](https://nuxt.com/) for the front end and [Sanity](https
 
 ## Getting started
 
-The following commands are meant to be run in **both** the `/app` and `/studio` folders.
+Run the following commands to prepare both applications, each step should be executed from the **root directory**:
 
-1. `npm install` to install dependencies
-2. `npm create sanity@latest init --env`, this will:
+1. Install dependencies.
 
-- ask you to select or create a Sanity project and dataset
-- output a `.env` file with appropriate variables
-- _(or use `sanity init --env` if you have the CLI installed)_
+```sh
+pnpm install
+```
 
-3. `npm run dev` to start the development server
+2. Select or create a Sanity project and dataset, and output the details to a `.env` file.
 
-Your Nuxt app should now be running on [http://localhost:3000/](http://localhost:3000/) and Studio on [http://localhost:3333/](http://localhost:3333/).
+```sh
+cd studio && pnpm sanity init --env .env
+```
 
-_Feel free to move each of the folders to their own location and check them into version control._
+3. [Generate a token](https://www.sanity.io/docs/http-auth#4c21d7b829fe) with read permissions for use in the next step.
+
+```sh
+pnpm sanity manage
+```
+
+4. Copy the example app `.env` file and populate it with the required values.
+
+```sh
+cp ./app/.env.example ./app/.env
+```
+
+5.  Start the development servers:
+
+```sh
+pnpm dev
+```
+
+- Your Nuxt app should now be running on [http://localhost:3000/](http://localhost:3000/).
+- Your Studio should now be running on [http://localhost:3333/](http://localhost:3333/).
 
 ### Add content
 
@@ -44,16 +64,10 @@ _Feel free to move each of the folders to their own location and check them into
 
 The schema for the `Post` document is defined in the `/studio/schemas` folder. You can add more documents and schemas to the Studio to suit your needs.
 
-## Removing TypeScript
-
-If you do not wish to use TypeScript, we've included a `remove-typescript.mjs` file in the root of this repository. You can run this file with `node remove-typescript.mjs` to strip all types from both the `/app` and `/studio` folders. Please run this before tampering with any code to ensure that all types are properly removed.
-
-If you intend to use TypeScript, you can safely remove the `remove-typescript.mjs` file.
-
 ## Deployments
 
 The `/app` and `/studio` folders are meant to be deployed separately.
 
-Feel free to deploy the App to whichever hosting provider you prefer. We recommend [Vercel](https://vercel.com/).
+Make sure that after `/app` is deployed the `.env` file in `/studio` is updated with its deployment URL under `SANITY_STUDIO_PREVIEW_URL`.
 
-You can deploy the Sanity Studio by running `sanity deploy` in the `/studio` repository, provided you have the `@sanity/cli` installed globally.
+And `/app` has a `.env` file with `NUXT_SANITY_STUDIO_URL` that points to the Studio's deployment URL.

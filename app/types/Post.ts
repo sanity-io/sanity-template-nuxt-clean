@@ -1,4 +1,4 @@
-import { PortableTextBlock, Slug, ImageAsset } from "@sanity/types";
+import type { PortableTextBlock, Slug, ImageAsset } from "@sanity/types";
 
 export interface Post {
   _id: string;
