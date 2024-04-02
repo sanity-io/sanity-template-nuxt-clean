@@ -9,10 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@sanity/types": "^3.20.0",
+    "@sanity/types": "^3.36.2",
     "@types/node": "^18.17.14",
-    "nuxt": "^3.10.3",
-    "postcss": "^8.4.31",
+    "nuxt": "^3.11.1",
+    "postcss": "^8.4.38",
     "postcss-nested": "^6.0.1"
   },
   "dependencies": {
