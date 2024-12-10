@@ -45,7 +45,7 @@ pnpm sanity manage
 4. Copy the example app `.env` file and populate it with the required values.
 
 ```sh
-cp ./app/.env.example ./app/.env
+cp ../app/.env.example ../app/.env
 ```
 
 5.  Start the development servers:
