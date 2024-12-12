@@ -45,6 +45,7 @@ pnpm sanity manage
 4. Copy the example app `.env` file and populate it with the required values.
 
 ```sh
+cd ..
 cp ./app/.env.example ./app/.env
 ```
 
