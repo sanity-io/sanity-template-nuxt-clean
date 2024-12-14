@@ -21,16 +21,16 @@ importers:
         specifier: ^3.0.0
         version: 3.2.0(magicast@0.3.4)(rollup@4.18.1)
       '@nuxtjs/sanity':
-        specifier: ^1.10.1
+        specifier: ^1.11.5
         version: 1.11.5(magicast@0.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.18.1)
       '@portabletext/vue':
-        specifier: ^1.0.7
+        specifier: ^1.0.11
         version: 1.0.11(vue@3.4.31(typescript@5.7.2))
       '@sanity/image-url':
         specifier: ^1.0.2
         version: 1.0.2
       groq:
-        specifier: ^3.9.1
+        specifier: ^3.50.0
         version: 3.50.0
     devDependencies:
       '@sanity/types':
