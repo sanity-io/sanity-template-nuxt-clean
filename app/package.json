@@ -9,7 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@sanity/types": "^3.50.0",
+    "@sanity/types": "^3.67.1",
     "@types/node": "^18.17.14",
     "nuxt": "^3.12.3",
     "postcss": "^8.4.39",
@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.0",
-    "@nuxtjs/sanity": "^1.11.5",
+    "@nuxtjs/sanity": "^1.13.1",
     "@portabletext/vue": "^1.0.11",
-    "@sanity/image-url": "^1.0.2",
-    "groq": "^3.50.0"
+    "@sanity/image-url": "^1.1.0",
+    "groq": "^3.67.1"
   }
 }
