@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { Post } from '~/types/Post'
-import { formatDate, urlFor } from '~/utils'
+import type {Post} from '~/types/Post'
+import {formatDate, urlFor} from '~/utils'
 
-defineProps<{ post: Post }>()
+defineProps<{post: Post}>()
 </script>
 
 <template>

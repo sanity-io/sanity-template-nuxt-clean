@@ -7,9 +7,11 @@
     "format": "prettier --cache --write ."
   },
   "prettier": {
+    "bracketSpacing": false,
     "plugins": [
       "prettier-plugin-packagejson"
     ],
+    "printWidth": 100,
     "semi": false,
     "singleQuote": true
   },
