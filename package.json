@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -r dev",
-    "format": "prettier --cache --write ."
+    "format": "prettier --cache --write .",
+    "lint": "pnpm -r --if-present lint"
   },
   "prettier": {
     "bracketSpacing": false,

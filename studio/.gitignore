@@ -28,3 +28,5 @@
 
 # Dotenv and similar local-only files
 *.local
+
+.eslintcache
