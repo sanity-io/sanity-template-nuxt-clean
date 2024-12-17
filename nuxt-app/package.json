@@ -10,15 +10,16 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.0",
-    "@nuxtjs/sanity": "^1.10.1",
+    "@nuxtjs/sanity": "^1.13.1",
     "@portabletext/vue": "^1.0.7",
     "@sanity/image-url": "^1.0.2",
-    "groq": "^3.9.1"
+    "groq": "^3.9.1",
+    "sanity": "^3.67.1"
   },
   "devDependencies": {
     "@sanity/types": "^3.50.0",
     "@types/node": "^18.17.14",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.14.1592",
     "postcss": "^8.4.39",
     "postcss-nested": "^6.0.1"
   }
