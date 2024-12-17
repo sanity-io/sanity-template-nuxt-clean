@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type Post } from '~/types/Post'
-import { PortableText } from '@portabletext/vue'
+import type {Post} from '~/types/Post'
+import {PortableText} from '@portabletext/vue'
 
 const route = useRoute()
 
 const query = groq`*[ _type == "post" && slug.current == $slug][0]`
-const { data: post } = await useSanityQuery<Post>(query, {
+const {data: post} = await useSanityQuery<Post>(query, {
   slug: route.params.slug,
 })
 </script>

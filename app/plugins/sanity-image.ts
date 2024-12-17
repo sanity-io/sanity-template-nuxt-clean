@@ -1,5 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url'
-import type { Image } from '@sanity/types'
+import type {Image} from '@sanity/types'
 
 export default defineNuxtPlugin(() => {
   const sanity = useSanity()
@@ -10,6 +10,6 @@ export default defineNuxtPlugin(() => {
   }
 
   return {
-    provide: { urlFor },
+    provide: {urlFor},
   }
 })

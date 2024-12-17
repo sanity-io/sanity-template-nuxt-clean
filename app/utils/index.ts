@@ -1,5 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url'
-import type { Image } from '@sanity/types'
+import type {Image} from '@sanity/types'
 
 export function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {

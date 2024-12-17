@@ -19,11 +19,7 @@
           <h3 class="step__title">Dive into the documentation</h3>
           <p class="steps__text">
             Check out{{ ' ' }}
-            <a
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              href="https://www.sanity.io/docs"
-            >
+            <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.sanity.io/docs">
               the documentation </a
             >{{ ' ' }} to learn more about Sanity.
           </p>
