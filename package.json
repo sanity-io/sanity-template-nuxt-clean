@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "stuido",
+    "studio",
     "nuxt-app"
   ],
   "scripts": {
-    "dev": "pnpm -r dev",
+    "dev": "concurrently \"npm run dev --workspace=nuxt-app\" \"npm run dev --workspace=studio\"",
     "format": "prettier --cache --write ."
   },
   "prettier": {
