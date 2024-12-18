@@ -16,7 +16,7 @@ https://sanity-template-nuxt-clean.sanity.build
 
 ## Getting Started
 
-### Install the template
+### Installing the template
 
 #### 1. Initialize template with Sanity CLI
 
