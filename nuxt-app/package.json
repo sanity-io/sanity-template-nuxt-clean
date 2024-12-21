@@ -5,15 +5,8 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@sanity/types": "^3.67.1",
-    "@types/node": "^20.9.0",
-    "nuxt": "^3.14.0",
-    "postcss": "^8.4.49",
-    "postcss-nested": "^7.0.2"
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
@@ -21,5 +14,12 @@
     "@portabletext/vue": "^1.0.11",
     "@sanity/image-url": "^1.1.0",
     "groq": "^3.67.1"
+  },
+  "devDependencies": {
+    "@sanity/types": "^3.67.1",
+    "@types/node": "^20.9.0",
+    "nuxt": "^3.14.0",
+    "postcss": "^8.4.49",
+    "postcss-nested": "^7.0.2"
   }
 }

@@ -15,6 +15,7 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
   sanity: {
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
     dataset: process.env.NUXT_SANITY_DATASET,
@@ -26,10 +27,13 @@ export default defineNuxtConfig({
       stega: true,
     },
   },
+
   postcss: {
     plugins: {
       autoprefixer: {},
       'postcss-nested': {},
     },
   },
+
+  compatibilityDate: '2024-12-17',
 })

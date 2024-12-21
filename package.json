@@ -2,8 +2,12 @@
   "name": "sanity-template-nuxt-clean",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "nuxt-app",
+    "studio"
+  ],
   "scripts": {
-    "dev": "pnpm -r dev",
+    "dev": "concurrently \"npm run dev --workspace=nuxt-app\" \"npm run dev --workspace=studio\"",
     "format": "prettier --cache --write ."
   },
   "prettier": {
@@ -14,6 +18,7 @@
     "singleQuote": true
   },
   "devDependencies": {
+    "concurrently": "^9.1.0",
     "prettier": "^3.4.2",
     "prettier-plugin-packagejson": "2.5.0"
   },
