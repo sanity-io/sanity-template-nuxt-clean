@@ -4,11 +4,11 @@ This template includes a [Nuxt](https://nuxt.com/) app with a [Sanity Studio](ht
 
 ## Features
 
-* Fetch content seamlessly with [Sanity Content Lake](https://www.sanity.io/docs/datastore).
-* Render beautiful block content using [Portable Text](https://www.sanity.io/docs/presenting-block-text).
-* Manage and create content with the intuitive [Sanity Studio](https://www.sanity.io/docs/sanity-studio).
-* Live visual editing through [Sanity's Presentation tools](https://www.sanity.io/docs/presentation).
-* Advanced image cropping and rendering via [Sanity Image URLs](https://www.sanity.io/docs/image-url).
+- Fetch content seamlessly with [Sanity Content Lake](https://www.sanity.io/docs/datastore).
+- Render beautiful block content using [Portable Text](https://www.sanity.io/docs/presenting-block-text).
+- Manage and create content with the intuitive [Sanity Studio](https://www.sanity.io/docs/sanity-studio).
+- Live visual editing through [Sanity's Presentation tools](https://www.sanity.io/docs/presentation).
+- Advanced image cropping and rendering via [Sanity Image URLs](https://www.sanity.io/docs/image-url).
 
 ## Demo
 
@@ -45,6 +45,7 @@ Open the Studio running locally in your browser on [http://localhost:3333](http:
 ### Adding content with Sanity
 
 #### 1. Publish your first document
+
 The template comes pre-defined with a schema containing a `Post` document type.
 
 From the Studio, click "+ Create" and select the `Post` document type. Go ahead and create and publish the document.
@@ -52,12 +53,14 @@ From the Studio, click "+ Create" and select the `Post` document type. Go ahead 
 Your content should now appear in your Nuxt app ([http://localhost:3000](http://localhost:3000)) as well as in the Studio on the "Presentation" Tab
 
 #### 2. Extending the Sanity schema
+
 The schema for the `Post` document type is defined in the `studio/src/schemaTypes/post.ts` file. You can [add more document types](https://www.sanity.io/docs/schema-types) to the schema to suit your needs.
 
 ### Deploying your application and inviting editors
 
 #### 1. Deploy Sanity Studio
-Your Nuxt frontend (`/nuxt-app`) and Sanity Studio (`/studio`) are still only running on your local computer. It's time to deploy and get it into the hands of other content editors.
+
+Your Nuxt frontend (`/frontend`) and Sanity Studio (`/studio`) are still only running on your local computer. It's time to deploy and get it into the hands of other content editors.
 
 Back in your Studio directory (`/studio`), run the following command to deploy your Sanity Studio.
 
@@ -75,12 +78,13 @@ You have the freedom to deploy your Nuxt app to your hosting provider of choice.
 4. Configure your Environment Variables.
 
 #### 3. Invite a collaborator
+
 Now that you’ve deployed your Nuxt application and Sanity Studio, you can optionally invite a collaborator to your Studio. Open up [Manage](https://www.sanity.io/manage), select your project and click "Invite project members"
 
 They will be able to access the deployed Studio, where you can collaborate together on creating content.
 
-
 ## Resources
+
 - [Sanity documentation](https://www.sanity.io/docs)
 - [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction)
 - [Join the Sanity Community](https://slack.sanity.io)
