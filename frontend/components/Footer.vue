@@ -11,7 +11,7 @@
           class="flex flex-col gap-3 items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4"
         >
           <a
-            href="https://github.com/sanity-io/sanity-template-nextjs-clean"
+            href="https://github.com/sanity-io/sanity-template-nuxt-clean"
             class="rounded-full flex gap-2 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
