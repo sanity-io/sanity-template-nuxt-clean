@@ -130,3 +130,22 @@
 
   --default-transition-duration: 250ms;
 }
+
+@keyframes expandWidth {
+  0% {
+    width: 0vw;
+    opacity: 0%;
+  }
+  50% {
+    width: 40vw;
+    opacity: 75%;
+  }
+  100% {
+    width: 25vw;
+    opacity: 20%;
+  }
+}
+
+.animate-width {
+  animation: expandWidth 1s forwards;
+}

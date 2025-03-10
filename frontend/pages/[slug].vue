@@ -2,12 +2,17 @@
 import { pageQuery } from "~/sanity/queries";
 import type { PageQueryResult } from "~/sanity/types";
 
-const { data: page, refresh } = await useSanityQuery<PageQueryResult>(
-  pageQuery,
-  { slug: useRoute().params.slug }
-); // TODO do I need refresh?
+const { data: page } = await useSanityQuery<PageQueryResult>(pageQuery, {
+  slug: useRoute().params.slug,
+});
 
+// This is needed to correctly set the studioUrl
 const runtimeConfig = useRuntimeConfig();
+
+useSiteMetadata({
+  title: page?.value?.seoTitle || page?.value?.heading,
+  description: page?.value?.seoDescription || page?.value?.subheading,
+});
 </script>
 
 <template>

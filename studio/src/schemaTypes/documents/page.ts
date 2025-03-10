@@ -11,12 +11,24 @@ export const page = defineType({
   title: 'Page',
   type: 'document',
   icon: DocumentIcon,
+  groups: [
+    {
+      name: 'content',
+      title: 'Content',
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
+  ],
   fields: [
+    // Content fields
     defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
+      group: 'content',
     }),
 
     defineField({
@@ -28,17 +40,20 @@ export const page = defineType({
         source: 'name',
         maxLength: 96,
       },
+      group: 'content',
     }),
     defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
       validation: (Rule) => Rule.required(),
+      group: 'content',
     }),
     defineField({
       name: 'subheading',
       title: 'Subheading',
       type: 'string',
+      group: 'content',
     }),
     defineField({
       name: 'pageBuilder',
@@ -57,6 +72,25 @@ export const page = defineType({
           ],
         },
       },
+      group: 'content',
+    }),
+
+    // SEO fields
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+      description:
+        'Title used for search engines and social media sharing (recommended: 50-60 characters)',
+      group: 'seo',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      description:
+        'Description used for search engines and social media sharing (recommended: 150-160 characters)',
+      group: 'seo',
     }),
   ],
 })

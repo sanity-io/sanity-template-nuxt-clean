@@ -2,19 +2,21 @@
 import { postQuery, somePostsQuery } from "~/sanity/queries";
 import type { PostQueryResult, SomePostsQueryResult } from "~/sanity/types";
 
-const { data: post, refresh } = await useSanityQuery<PostQueryResult>(
-  postQuery,
-  {
-    slug: useRoute().params.slug,
-  }
-);
+const { data: post } = await useSanityQuery<PostQueryResult>(postQuery, {
+  slug: useRoute().params.slug,
+});
 const { data: posts } = await useSanityQuery<SomePostsQueryResult>(
   somePostsQuery,
   {
     skip: useRoute().params.slug,
     limit: 2,
   }
-); // TODO do I need refresh?
+);
+
+useSiteMetadata({
+  title: post?.value?.seoTitle || post?.value?.title,
+  description: post?.value?.seoDescription || post?.value?.excerpt,
+});
 </script>
 
 <template>
