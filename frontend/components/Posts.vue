@@ -27,10 +27,12 @@ defineProps({
     <p v-if="subHeading" class="mt-2 text-lg leading-8 text-gray-600">
       {{ subHeading }}
     </p>
-    <div class="mt-6 pt-6 space-y-12 border-t border-gray-200">
-      <div v-for="post in posts" :key="post._id">
-        <Post :post="post" />
-      </div>
+    <div
+      class="mt-6 pt-6 space-y-12 border-t border-gray-200"
+      v-for="post in posts"
+      :key="post._id"
+    >
+      <Post :post="post" />
     </div>
   </div>
 </template>
