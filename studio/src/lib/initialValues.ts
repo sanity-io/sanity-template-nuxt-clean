@@ -2,7 +2,7 @@
  * Demo data used as placeholders and initial values for the blog
  */
 
-export const title = 'Blog.'
+export const title = 'Sanity + Nuxt'
 
 export const description = [
   {
@@ -13,7 +13,7 @@ export const description = [
         _key: '4a58edd077880',
         _type: 'span',
         marks: [],
-        text: 'A statically generated blog example using ',
+        text: 'A website example using ',
       },
       {
         _key: '4a58edd077881',
@@ -56,4 +56,4 @@ export const description = [
   },
 ]
 
-export const ogImageTitle = 'A Nuxt Blog with a Native Authoring Experience'
+export const ogImageTitle = 'A Nuxt + Sanity Website'

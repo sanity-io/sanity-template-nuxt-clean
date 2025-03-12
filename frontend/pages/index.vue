@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { postsQuery } from "~/sanity/queries";
-import type { PostsQueryResult } from "~/sanity/types";
+import { postsQuery, settingsQuery } from "~/sanity/queries";
+import type { PostsQueryResult, SettingsQueryResult } from "~/sanity/types";
 
 const { data: posts } = await useSanityQuery<PostsQueryResult>(postsQuery);
+const { data: settings } =
+  await useSanityQuery<SettingsQueryResult>(settingsQuery);
 
 useSiteMetadata({
   title: "Sanity + Nuxt",
   description:
     "This starter template is a powerful web app built with Nuxt for the frontend and Sanity for seamless content management. It includes a standalone Sanity Studio (CMS) with advanced features like Visual Editing, type-safe schemas and queries using Sanity TypeGen , a structured content page builder, and more. The @nuxtjs/sanity toolkit is integrated into the frontend, ensuring a quick and effortless setup.",
+  ogImage: settings?.value?.ogImage || "",
 });
+
 usePageAnimation();
 </script>
 
@@ -60,52 +64,7 @@ usePageAnimation();
         <div
           class="prose sm:prose-lg md:prose-xl xl:prose-2xl text-gray-700 prose-a:text-gray-700 font-light text-center"
         >
-          This starter template is a web app built with Nuxt and Sanity. It
-          includes a standalone Sanity Studio (CMS) with advanced features like
-          <NuxtLink
-            target="_blank"
-            rel="noopener noreferrer"
-            to="https://www.sanity.io/docs/introduction-to-visual-editing"
-            >Visual Editing</NuxtLink
-          >, type-safe schemas and queries using
-          <NuxtLink
-            to="https://www.sanity.io/docs/sanity-typegen"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Sanity TypeGen
-          </NuxtLink>
-          , a structured content page builder, and more. Sanity is simply
-          integrated into Nuxt using the
-          <NuxtLink
-            target="_blank"
-            rel="noopener noreferrer"
-            to="https://sanity.nuxtjs.org/"
-          >
-            @nuxtjs/sanity toolkit
-          </NuxtLink>
-          ensuring a quick and effortless setup.
-        </div>
-        <div class="flex items-center flex-col gap-4">
-          <GetStartedCode />
-          <NuxtLink
-            to="https://www.sanity.io/docs"
-            class="inline-flex text-red-400 text-xs md:text-sm underline hover:text-gray-900"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Sanity Documentation
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="w-4 h-4 ml-1 inline"
-              fill="currentColor"
-            >
-              <path
-                d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V12L17.206 8.207L11.2071 14.2071L9.79289 12.7929L15.792 6.793L12 3H21Z"
-              ></path>
-            </svg>
-          </NuxtLink>
+          <PortableText :portableText="settings?.description ?? []" />
         </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { linkResolver } from "~/lib/utils";
+import type { Link } from "~/sanity/types";
 
 const props = defineProps({
   link: {
-    type: Object,
+    type: Object as PropType<Link>,
     required: true,
   },
   className: {
@@ -12,13 +13,9 @@ const props = defineProps({
   },
 });
 
-// console.log("LINKprops:", props);
-
 const resolvedLink = computed(() => {
   return linkResolver(props.link);
 });
-// console.log("props.link:", props.link);
-// console.log("resolvedLink:", resolvedLink.value);
 </script>
 
 <template>

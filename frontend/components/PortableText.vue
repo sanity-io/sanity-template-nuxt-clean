@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ResolvedLink from "~/components/ResolvedLink.vue";
-import type { BlockContent } from "../sanity/types";
 
 const serializers = {
   marks: {
@@ -9,7 +8,7 @@ const serializers = {
 };
 
 defineProps<{
-  portableText: BlockContent;
+  portableText: any[];
 }>();
 </script>
 

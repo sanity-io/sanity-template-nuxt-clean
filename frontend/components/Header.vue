@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { settingsQuery } from "~/sanity/queries";
+import type { SettingsQueryResult } from "~/sanity/types";
+
+const { data: settings } =
+  await useSanityQuery<SettingsQueryResult>(settingsQuery);
+</script>
+
 <template>
   <header
     class="fixed z-50 h-24 inset-0 bg-white/80 flex items-center backdrop-blur-lg"
@@ -5,7 +13,9 @@
     <div class="container py-6 sm:px-6">
       <div class="flex items-center justify-between gap-5">
         <NuxtLink class="flex items-center gap-2" to="/">
-          <span class="block text-2xl pl-2 font-semibold"> Sanity + Nuxt </span>
+          <span class="text-2xl pl-2 font-semibold">
+            {{ settings?.title }}
+          </span>
         </NuxtLink>
 
         <nav>

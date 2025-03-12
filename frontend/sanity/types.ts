@@ -166,6 +166,58 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type Settings = {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      linkType?: "href" | "page" | "post";
+      href?: string;
+      page?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      post?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      openInNewTab?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type Page = {
   _id: string;
   _type: "page";
@@ -240,52 +292,6 @@ export type Person = {
   };
 };
 
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
-export type Settings = {
-  _id: string;
-  _type: "settings";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
-    markDefs?: Array<{
-      href: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  ogImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    metadataBase?: string;
-    _type: "image";
-  };
-};
-
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
   top?: number;
@@ -341,6 +347,12 @@ export type SanityImageMetadata = {
   blurHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
+};
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
 };
 
 export type SanityAssistInstructionTask = {
@@ -464,7 +476,7 @@ export type SanityAssistSchemaTypeField = {
   } & SanityAssistInstruction>;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | CallToAction | Link | InfoSection | BlockContent | Page | Post | Person | Slug | Settings | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | CallToAction | Link | InfoSection | BlockContent | Settings | Page | Post | Person | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/queries.ts
 // Variable: postsQuery
@@ -689,6 +701,53 @@ export type PageQueryResult = {
   seoTitle?: string;
   seoDescription?: string;
 } | null;
+// Variable: settingsQuery
+// Query: *[_type == "settings"][0]{			title,			description[]{						...,						markDefs[]{							...,							_type == "link" => {								"link": {									...,									_type == "link" => {	"page": page->slug.current,	"post": post->slug.current}								}							},						}					},			"ogImage": ogImage.asset->url		}
+export type SettingsQueryResult = {
+  title: string;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs: Array<{
+      linkType?: "href" | "page" | "post";
+      href?: string;
+      page?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      post?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      openInNewTab?: boolean;
+      _type: "link";
+      _key: string;
+      link: {
+        linkType?: "href" | "page" | "post";
+        href?: string;
+        page: string | null;
+        post: string | null;
+        openInNewTab?: boolean;
+        _type: "link";
+        _key: string;
+      };
+    }> | null;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  ogImage: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -698,5 +757,6 @@ declare module "@sanity/client" {
     "\n\t\t*[_type == \"post\" && slug.current != $skip][0...$limit] | order(date desc, _updatedAt desc) {\n\t\t\t...\n\t\t}": SomePostsQueryResult;
     "\n\t\t*[_type == \"post\" && defined(slug.current) && slug.current == $slug][0]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmarkDefs[]{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t_type == \"link\" => {\n\t\t\t\t\t\t\t\t\"link\": {\n\t\t\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\t\t\n_type == \"link\" => {\n\t\"page\": page->slug.current,\n\t\"post\": post->slug.current\n}\n\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\"author\": author->{..., \"picture\": picture.asset._ref}\n\t\t}": PostQueryResult;
     "\n\t\t*[_type == \"page\" && defined(slug.current) && slug.current == $slug][0]{\n\t\t\t...,\n\t\t\t\"pageBuilder\": pageBuilder[]{\n\t\t\t\t...,\n\t\t\t\t_type == \"callToAction\" => {\n\t\t\t\t\t\nlink {\n\t...,\n\t\n_type == \"link\" => {\n\t\"page\": page->slug.current,\n\t\"post\": post->slug.current\n}\n\n\t}\n,\n\t\t\t\t},\n\t\t\t\t_type == \"infoSection\" => {\n\t\t\t\t\tcontent[]{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmarkDefs[]{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t_type == \"link\" => {\n\t\t\t\t\t\t\t\t\"link\": {\n\t\t\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\t\t\n_type == \"link\" => {\n\t\"page\": page->slug.current,\n\t\"post\": post->slug.current\n}\n\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t}\n\t\t}": PageQueryResult;
+    "\n\t\t*[_type == \"settings\"][0]{\n\t\t\ttitle,\n\t\t\tdescription[]{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmarkDefs[]{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t_type == \"link\" => {\n\t\t\t\t\t\t\t\t\"link\": {\n\t\t\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\t\t\n_type == \"link\" => {\n\t\"page\": page->slug.current,\n\t\"post\": post->slug.current\n}\n\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\"ogImage\": ogImage.asset->url\n\t\t}": SettingsQueryResult;
   }
 }

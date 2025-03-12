@@ -64,3 +64,21 @@ export const pageQuery = defineQuery(/* groq */ `
 				},
 			}
 		}`);
+
+export const settingsQuery = defineQuery(/* groq */ `
+		*[_type == "settings"][0]{
+			title,
+			description[]{
+						...,
+						markDefs[]{
+							...,
+							_type == "link" => {
+								"link": {
+									...,
+									${linkReference}
+								}
+							},
+						}
+					},
+			"ogImage": ogImage.asset->url
+		}`);

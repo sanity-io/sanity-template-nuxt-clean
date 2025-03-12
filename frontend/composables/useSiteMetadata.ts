@@ -1,9 +1,10 @@
 type SiteMetadata = {
   title?: string;
   description?: string;
+  ogImage?: string;
 };
 
-export function useSiteMetadata({ title, description }: SiteMetadata) {
+export function useSiteMetadata({ title, description, ogImage }: SiteMetadata) {
   useSeoMeta({
     title,
     description,
@@ -12,6 +13,7 @@ export function useSiteMetadata({ title, description }: SiteMetadata) {
     twitterTitle: title,
     twitterDescription: description,
     twitterCard: "summary",
+    ogImage,
   });
 
   useHead({

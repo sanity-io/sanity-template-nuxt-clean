@@ -7,7 +7,7 @@ type SimplifiedPerson = Omit<Person, "picture"> & {
 
 defineProps({
   person: {
-    type: Object as PropType<SimplifiedPerson>, // TODO is this right?  I've not used this 'PropType' before
+    type: Object as PropType<SimplifiedPerson>,
     required: true,
   },
   date: {
@@ -15,12 +15,6 @@ defineProps({
     required: false,
   },
 });
-
-// This also seems to work 🤔
-// defineProps<{
-//   person: SimplifiedPerson;
-//   date: string;
-// }>();
 </script>
 
 <template>

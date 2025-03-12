@@ -1,20 +1,13 @@
 <script lang="ts" setup>
-import type {
-  CallToAction as OriginalCallToAction,
-  InfoSection as OriginalInfoSection,
-} from "~/sanity/types";
+import type { PageQueryResult } from "~/sanity/types";
 
-type CallToAction = OriginalCallToAction & {
-  _key: string;
-};
+type PageBuilderBlock = NonNullable<
+  NonNullable<PageQueryResult>["pageBuilder"]
+>[number];
 
-type InfoSection = OriginalInfoSection & {
-  _key: string;
-};
-
-const props = defineProps({
+defineProps({
   blocks: {
-    type: Array as () => Array<CallToAction | InfoSection>,
+    type: Array as () => PageBuilderBlock[],
     required: false,
   },
 });

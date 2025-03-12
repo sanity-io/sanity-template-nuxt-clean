@@ -37,7 +37,6 @@ useSiteMetadata({
     <div>
       <div v-if="page.pageBuilder && page.pageBuilder.length > 0">
         <PageBuilder :blocks="page.pageBuilder" />
-        <!--TODO fix typescript error -->
       </div>
       <div v-else>
         <h2 class="text-2xl font-semibold text-gray-900">

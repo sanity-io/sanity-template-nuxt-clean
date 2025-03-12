@@ -16,15 +16,15 @@ export const settings = defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your blog.',
-      title: 'Title',
+      description: 'Site title used in the Navigation Bar',
+      title: 'Fallback SEOTitle',
       type: 'string',
       initialValue: demo.title,
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',
-      description: 'Used both for the <meta> description tag for SEO, and the blog subheader.',
+      description: 'Used on the Homepage',
       title: 'Description',
       type: 'array',
       initialValue: demo.description,
@@ -38,18 +38,74 @@ export const settings = defineType({
           marks: {
             decorators: [],
             annotations: [
-              defineField({
-                type: 'object',
+              {
                 name: 'link',
+                type: 'object',
+                title: 'Link',
                 fields: [
-                  {
+                  defineField({
+                    name: 'linkType',
+                    title: 'Link Type',
                     type: 'string',
+                    initialValue: 'href',
+                    options: {
+                      list: [
+                        {title: 'URL', value: 'href'},
+                        {title: 'Page', value: 'page'},
+                        {title: 'Post', value: 'post'},
+                      ],
+                      layout: 'radio',
+                    },
+                  }),
+                  defineField({
                     name: 'href',
                     title: 'URL',
-                    validation: (rule) => rule.required(),
-                  },
+                    type: 'url',
+                    hidden: ({parent}) => parent?.linkType !== 'href' && parent?.linkType != null,
+                    validation: (Rule) =>
+                      Rule.custom((value, context: any) => {
+                        if (context.parent?.linkType === 'href' && !value) {
+                          return 'URL is required when Link Type is URL'
+                        }
+                        return true
+                      }),
+                  }),
+                  defineField({
+                    name: 'page',
+                    title: 'Page',
+                    type: 'reference',
+                    to: [{type: 'page'}],
+                    hidden: ({parent}) => parent?.linkType !== 'page',
+                    validation: (Rule) =>
+                      Rule.custom((value, context: any) => {
+                        if (context.parent?.linkType === 'page' && !value) {
+                          return 'Page reference is required when Link Type is Page'
+                        }
+                        return true
+                      }),
+                  }),
+                  defineField({
+                    name: 'post',
+                    title: 'Post',
+                    type: 'reference',
+                    to: [{type: 'post'}],
+                    hidden: ({parent}) => parent?.linkType !== 'post',
+                    validation: (Rule) =>
+                      Rule.custom((value, context: any) => {
+                        if (context.parent?.linkType === 'post' && !value) {
+                          return 'Post reference is required when Link Type is Post'
+                        }
+                        return true
+                      }),
+                  }),
+                  defineField({
+                    name: 'openInNewTab',
+                    title: 'Open in new tab',
+                    type: 'boolean',
+                    initialValue: false,
+                  }),
                 ],
-              }),
+              },
             ],
           },
         }),
@@ -59,38 +115,14 @@ export const settings = defineType({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',
-      description: 'Displayed on social cards and search engine results.',
+      description:
+        'Displayed on social cards and search engine results.  Used everywhere unless overwritten.',
       options: {
         hotspot: true,
         aiAssist: {
           imageDescriptionField: 'alt',
         },
       },
-      fields: [
-        defineField({
-          name: 'alt',
-          description: 'Important for accessibility and SEO.',
-          title: 'Alternative text',
-          type: 'string',
-          validation: (rule) => {
-            return rule.custom((alt, context) => {
-              if ((context.document?.ogImage as any)?.asset?._ref && !alt) {
-                return 'Required'
-              }
-              return true
-            })
-          },
-        }),
-        defineField({
-          name: 'metadataBase',
-          type: 'url',
-          description: (
-            <a href="https://nuxt.com/docs/api/composables/use-head#meta" rel="noreferrer noopener">
-              More information
-            </a>
-          ),
-        }),
-      ],
     }),
   ],
   preview: {
