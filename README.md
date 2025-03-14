@@ -28,7 +28,7 @@ Run the command in your Terminal to initialize this template on your local compu
 See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```shell
-npm create sanity@latest -- --template https://github.com/sanity-io/sanity-template-nuxt-clean/tree/upgrade-template
+npm create sanity@latest -- --template sanity-io/sanity-template-nuxt-clean
 ```
 
 (ToDo: update script when merging)
