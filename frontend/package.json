@@ -26,7 +26,6 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@portabletext/types": "^2.0.13",
     "@tailwindcss/typography": "^0.5.16"
   }
 }

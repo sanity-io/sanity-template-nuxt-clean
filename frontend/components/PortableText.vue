@@ -1,11 +1,5 @@
 <script setup lang="ts">
 import ResolvedLink from "~/components/ResolvedLink.vue";
-import type {
-  PortableTextBlock,
-  ArbitraryTypedObject,
-  PortableTextSpan,
-  PortableTextMarkDefinition,
-} from "@portabletext/types";
 
 const serializers = {
   marks: {
@@ -17,12 +11,7 @@ const serializers = {
 };
 
 defineProps<{
-  portableText: PortableTextBlock<
-    PortableTextMarkDefinition,
-    ArbitraryTypedObject | PortableTextSpan,
-    string,
-    string
-  >[];
+  portableText: any[];
 }>();
 </script>
 
