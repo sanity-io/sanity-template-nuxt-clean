@@ -4,6 +4,9 @@ import ResolvedLink from "~/components/ResolvedLink.vue";
 const serializers = {
   marks: {
     link: ResolvedLink,
+    underline: "u",
+    code: "code",
+    "strike-through": "s",
   },
 };
 

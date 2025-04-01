@@ -43,7 +43,7 @@ useSiteMetadata({
           <div>
             <!-- <CoverImage :image="post.coverImage" priority /> -->
             <SanityImage
-              v-if="post.coverImage.asset?._ref"
+              v-if="post.coverImage?.asset?._ref"
               class="rounded-2xl shadow-md transition-shadow object-cover"
               :alt="post.coverImage?.alt || ''"
               :asset-id="post.coverImage.asset._ref"
