@@ -12,7 +12,7 @@
         >
           <a
             href="https://github.com/sanity-io/sanity-template-nuxt-clean"
-            class="rounded-full flex gap-2 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
+            class="rounded-full flex gap-2 items-center bg-black hover:bg-red-500 focus:bg-nuxt py-3 px-6 text-white transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
           >

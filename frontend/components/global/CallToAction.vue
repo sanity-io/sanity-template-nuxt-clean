@@ -31,7 +31,7 @@ defineProps({
         >
           <ResolvedLink
             :link="block.link"
-            class="rounded-full flex gap-2 mr-6 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
+            class="rounded-full flex gap-2 mr-6 items-center bg-black hover:bg-red-500 focus:bg-nuxt py-3 px-6 text-white transition-colors duration-200"
           >
             {{ block.buttonText }}
           </ResolvedLink>

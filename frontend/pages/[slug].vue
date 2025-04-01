@@ -47,7 +47,7 @@ useSiteMetadata({
         </p>
         <div v-if="runtimeConfig.public.studioUrl" class="mt-10 flex">
           <NuxtLink
-            class="rounded-full flex gap-2 mr-6 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
+            class="rounded-full flex gap-2 mr-6 items-center bg-black hover:bg-red-500 focus:bg-nuxt py-3 px-6 text-white transition-colors duration-200"
             :to="`${runtimeConfig.public.studioUrl}/structure/intent/edit/template=page;type=page;path=pageBuilder;id=${page._id}`"
             target="_blank"
             rel="noopener noreferrer"
