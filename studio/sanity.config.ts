@@ -56,7 +56,7 @@ export default defineConfig({
     // Presentation tool configuration for Visual Editing
     presentationTool({
       previewUrl: {
-        origin: process.env.SANITY_STUDIO_PREVIEW_URL,
+        origin: SANITY_STUDIO_PREVIEW_URL,
         previewMode: {
           enable: '/preview/enable',
           disable: '/preview/disable',
