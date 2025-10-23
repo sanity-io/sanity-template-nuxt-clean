@@ -13,15 +13,17 @@ useSiteMetadata({
   ogImage: settings?.value?.ogImage || "",
 });
 
-usePageAnimation();
+const { leftDivRef, rightDivRef } = usePageAnimation();
 </script>
 
 <template>
   <div class="relative">
     <div
+      ref="leftDivRef"
       class="bg-gradient-to-r from-red-400 w-[0] h-full absolute left-0 left-div"
     ></div>
     <div
+      ref="rightDivRef"
       class="bg-gradient-to-l from-nuxt w-[0] h-full absolute right-0 right-div"
     ></div>
     <div class="bg-gradient-to-b from-white w-full h-40 absolute top-0"></div>

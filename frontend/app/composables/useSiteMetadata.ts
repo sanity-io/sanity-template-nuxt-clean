@@ -5,7 +5,7 @@ type SiteMetadata = {
 };
 
 export function useSiteMetadata({ title, description, ogImage }: SiteMetadata) {
-  useSeoMeta({
+  useServerSeoMeta({
     title,
     description,
     ogTitle: title,
