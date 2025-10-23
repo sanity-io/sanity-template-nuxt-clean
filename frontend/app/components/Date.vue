@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { format } from "date-fns";
+import { format, formatISO } from "date-fns";
 
 defineProps({
   dateString: {
@@ -8,12 +8,21 @@ defineProps({
   },
 });
 const formattedDate: (dateString: string) => string = (dateString: string) => {
-  return dateString ? format(new Date(dateString), "LLLL d, yyyy") : "";
+  if (!dateString) return "";
+  try {
+    // Parse the date in UTC to ensure consistent server/client rendering
+    const date = new Date(dateString);
+    return format(date, "LLLL d, yyyy");
+  } catch (e) {
+    return "";
+  }
 };
 </script>
 
 <template>
-  <time v-if="dateString" :dateTime="dateString">
-    {{ formattedDate(dateString) }}
-  </time>
+  <ClientOnly>
+    <time v-if="dateString" :dateTime="dateString">
+      {{ formattedDate(dateString) }}
+    </time>
+  </ClientOnly>
 </template>

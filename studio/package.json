@@ -19,7 +19,6 @@
     "@sanity/assist": "^5.0.0",
     "@sanity/icons": "^3.7.4",
     "@sanity/vision": "4.11.0",
-    "date-fns": "^3.6.0",
     "pluralize-esm": "^9.0.5",
     "react": "^19.1",
     "react-dom": "^19.1",
