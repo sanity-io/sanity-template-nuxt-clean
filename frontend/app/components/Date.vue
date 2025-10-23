@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { format, formatISO } from "date-fns";
-
 defineProps({
   dateString: {
     type: String,
@@ -12,7 +10,11 @@ const formattedDate: (dateString: string) => string = (dateString: string) => {
   try {
     // Parse the date in UTC to ensure consistent server/client rendering
     const date = new Date(dateString);
-    return format(date, "LLLL d, yyyy");
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(date);
   } catch (e) {
     return "";
   }
