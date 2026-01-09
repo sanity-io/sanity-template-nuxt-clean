@@ -3,14 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "npm run typegen",
+    "prebuild": "sanity typegen generate",
     "build": "nuxt build",
-    "predev": "npm run typegen",
+    "predev": "npm run sanity:typegen",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typegen": "sanity typegen generate"
+    "sanity:typegen": "(cd ../studio && sanity schema extract --enforce-required-fields --path ../sanity.schema.json) && sanity typegen generate"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.12.1",
