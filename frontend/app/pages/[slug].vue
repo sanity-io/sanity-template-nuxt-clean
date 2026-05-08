@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { pageQuery } from "~/sanity/queries";
 
-const { data: page } = useSanityQuery<PageQueryResult>(pageQuery, {
+const { data: page } = await useSanityQuery<PageQueryResult>(pageQuery, {
   slug: useRoute().params.slug,
 });
 
@@ -21,13 +21,11 @@ useSiteMetadata({
         <div class="max-w-3xl">
           <h2
             v-if="page.heading"
-            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl"
-          >
+            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
             {{ page.heading }}
           </h2>
           <p
-            class="mt-4 text-base lg:text-lg leading-relaxed text-gray-600 uppercase font-light"
-          >
+            class="mt-4 text-base lg:text-lg leading-relaxed text-gray-600 uppercase font-light">
             {{ page.subheading }}
           </p>
         </div>
@@ -49,8 +47,7 @@ useSiteMetadata({
             class="rounded-full flex gap-2 mr-6 items-center bg-black hover:bg-red-500 focus:bg-nuxt py-3 px-6 text-white transition-colors duration-200"
             :to="`${runtimeConfig.public.studioUrl}/structure/intent/edit/template=page;type=page;path=pageBuilder;id=${page._id}`"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Add content to this page
           </NuxtLink>
         </div>

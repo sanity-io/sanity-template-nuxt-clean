@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { postQuery, somePostsQuery } from "~/sanity/queries";
 
-const { data: post } = useSanityQuery<PostQueryResult>(postQuery, {
+const { data: post } = await useSanityQuery<PostQueryResult>(postQuery, {
   slug: useRoute().params.slug,
 });
-const { data: posts } = useSanityQuery<SomePostsQueryResult>(
+const { data: posts } = await useLazySanityQuery<SomePostsQueryResult>(
   somePostsQuery,
   {
     skip: useRoute().params.slug,
@@ -25,8 +25,7 @@ useSiteMetadata({
         <div class="pb-6 grid gap-6 mb-6 border-b border-gray-100">
           <div class="max-w-3xl flex flex-col gap-6">
             <h2
-              class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl"
-            >
+              class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
               {{ post.title }}
             </h2>
           </div>
@@ -34,8 +33,7 @@ useSiteMetadata({
             <Avatar
               v-if="post.author"
               :person="post.author"
-              :date="post.date"
-            />
+              :date="post.date" />
           </div>
         </div>
         <article class="gap-6 grid max-w-4xl">
@@ -47,8 +45,7 @@ useSiteMetadata({
               :alt="post.coverImage?.alt || ''"
               :asset-id="post.coverImage.asset._ref"
               auto=""
-              format
-            />
+              format />
           </div>
           <div class="prose prose-a:text-red-500 max-w-2xl" v-if="post.content">
             <PortableText :portableText="post.content" />

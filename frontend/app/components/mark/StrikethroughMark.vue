@@ -4,5 +4,7 @@ import type { PortableTextMarkComponentProps } from '@nuxtjs/sanity/runtime/type
 defineProps<PortableTextMarkComponentProps>();
 </script>
 <template>
-  <s>{{ value?.text }}</s>
+  <s>
+    <slot />
+  </s>
 </template>
