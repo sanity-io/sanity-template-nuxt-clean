@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { PageQueryResult } from "~/sanity/types";
-
 type PageBuilderBlock = NonNullable<
   NonNullable<PageQueryResult>["pageBuilder"]
 >[number];

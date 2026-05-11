@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Person } from "~/sanity/types";
-
 type SimplifiedPerson = Omit<Person, "picture"> & {
   picture: string | null;
 };

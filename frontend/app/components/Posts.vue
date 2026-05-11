@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Post } from "../sanity/types";
 defineProps({
   heading: {
     type: String,

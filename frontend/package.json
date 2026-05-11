@@ -3,26 +3,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "npm run typegen",
     "build": "nuxt build",
-    "predev": "npm run typegen",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "typegen": "sanity typegen generate"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/fonts": "^0.12.1",
-    "@nuxtjs/sanity": "^2.0.0",
-    "@sanity/client": "^7.14.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "groq": "^5.2.0",
-    "nuxt": "^4.2.2",
-    "sanity": "^5.2.0",
-    "tailwindcss": "^4.1.18",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4"
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxtjs/sanity": "^2.3.0",
+    "@sanity/client": "^7.22.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "groq": "^5.24.0",
+    "nuxt": "^4.4.4",
+    "sanity": "^5.24.0",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19"

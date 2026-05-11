@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { InfoSection } from "~/sanity/types";
-
 defineProps({
   block: {
     type: Object as PropType<InfoSection>,

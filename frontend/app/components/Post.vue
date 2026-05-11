@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Post } from "../sanity/types";
-
 defineProps({
   post: {
     type: Object as PropType<Post>,
@@ -18,7 +16,7 @@ defineProps({
     <h3 class="mt-3 text-2xl font-semibold">
       <nuxt-link
         class="hover:text-red-500 underline transition-colors"
-        :to="`/posts/${post.slug.current}`"
+        :to="`/posts/${post.slug?.current}`"
       >
         {{ post.title }}
       </nuxt-link>

@@ -15,7 +15,7 @@ link {
 `;
 
 export const postsQuery =
-  defineQuery(`*[_type == "post"] | order(date desc, _updatedAt desc) {
+  defineQuery(`*[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
 		...
 	}`);
 export const somePostsQuery = defineQuery(/* groq */ `
