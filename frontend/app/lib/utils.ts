@@ -1,5 +1,3 @@
-import type { Link } from "~/sanity/types";
-
 export function linkResolver(link: Link | undefined) {
   if (!link) return null;
 

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { CallToAction } from "~/sanity/types";
-
 defineProps({
   block: {
     type: Object as PropType<CallToAction>,

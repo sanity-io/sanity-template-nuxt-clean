@@ -6,7 +6,7 @@ This template includes a [Nuxt](https://nuxt.com/) app with a [Sanity Studio](ht
 
 ## Features
 
-- **Nuxt 3 for Performance:** Leverage the power of Nuxt 3's hybrid rendering capabilities for blazing-fast performance and SEO-friendly applications.
+- **Nuxt 4 for Performance:** Leverage the power of Nuxt 4's hybrid rendering capabilities for blazing-fast performance and SEO-friendly applications.
 - **Real-time Previews:** Edit content live with Sanity's [Presentation Tool](https://www.sanity.io/docs/presentation) and see updates in real time.
 - **Powerful Content Management:** Collaborate with team members in real-time, with fine-grained revision history.
 - **AI-powered Media Support:** Auto-generate alt text with [Sanity AI Assist](https://www.sanity.io/ai-assist). (Available on Free Trial and Growth Tiers. [See Pricing](https://www.sanity.io/pricing))
