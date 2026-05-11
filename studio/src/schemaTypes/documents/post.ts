@@ -1,5 +1,5 @@
 import {DocumentTextIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from '@sanity/types'
 
 /**
  * Post schema.  Define and edit the fields for the 'post' content type.
