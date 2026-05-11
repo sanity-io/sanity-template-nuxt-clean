@@ -1,5 +1,5 @@
 import {CogIcon} from '@sanity/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from '@sanity/types'
 
 import * as demo from '../../lib/initialValues'
 
