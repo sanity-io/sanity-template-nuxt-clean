@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from '@sanity/types'
 import {DocumentIcon} from '@sanity/icons'
 
 /**

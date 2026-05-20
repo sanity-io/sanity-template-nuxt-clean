@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from '@sanity/types'
 import {TextIcon} from '@sanity/icons'
 
 export const infoSection = defineType({
